@@ -114,22 +114,22 @@ class dbl_lnk_lst:
     def deletion(self): # to delete the last node
         if self.head == None:
             print("Nothing left to remove")
-            return 1
         else:
             if self.tail.prev == None:
+                print("here")
                 head = self.head
                 self.head = None
                 self.tail = None
+                print(f"{head.data} has been deleted")
                 del head
-                return 0
                 
             else:
+                print("HERE")
                 tail_node = self.tail
                 self.tail.prev.next = None
                 self.tail = self.tail.prev
                 print(f"{tail_node.data} has been deleted")
                 del tail_node
-                return 0
 
     def Display(self): # traversal in both ways
         if self.head == None:
@@ -155,26 +155,19 @@ class dbl_lnk_lst:
 
 dbl = dbl_lnk_lst()
 cnd = True
-ck = 0
 while cnd:
     print("Menu\n\t1. Create\n\t2. insert\n\t3. Display\n\t4. Delete\n\t5. Quit")
     query = int(input("Enter selected option: "))
     
     if query == 1:
-        if ck == 0:
-            ck = 1
-            dbl.create()
-        else:
-            print("List has already been created and no need to create it again")
+        dbl.create()
     elif query == 2:
         dbl.insertion()
     elif query == 3:
         dbl.Display()
     elif query == 4:
-        if dbl.deletion() == 1:
-            ck = 0
-        else:
-            dbl.deletion()
+        dbl.deletion()
+               
     elif query == 5:
         print("Quitting...")
         cnd = False
